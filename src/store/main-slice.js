@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialCartMenuStateSlice = {
   isCartMenuOpen: false,
+  statusMessage: null,
 };
 
 export const cartSlicer = createSlice({
@@ -11,8 +12,15 @@ export const cartSlicer = createSlice({
     toggleCartVisibility(state) {
       state.isCartMenuOpen = !state.isCartMenuOpen;
     },
+    showStatusMessage(state, action) {
+      state.statusMessage = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message
+      }
+    }
   },
 });
 
-export const cartMenuReducer = cartSlicer.reducer;
-export const cartMenuActions = cartSlicer.actions;
+export const mainReducer = cartSlicer.reducer;
+export const mainActions = cartSlicer.actions;

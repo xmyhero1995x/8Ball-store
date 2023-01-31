@@ -1,12 +1,12 @@
 import styles from "./CartButton.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { cartMenuActions } from "../../store/main-slice";
+import { mainActions } from "../../store/main-slice";
 
 export const CartButton = (props) => {
   const cartItemsNumber = useSelector((state) => state.cart.itemsQuantity)
   const disputchFunction = useDispatch();
   const cartVisibilityHandler = () => {
-    disputchFunction(cartMenuActions.toggleCartVisibility());
+    disputchFunction(mainActions.toggleCartVisibility());
   };
 
   return (
