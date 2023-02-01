@@ -88,18 +88,20 @@ export const sendCartData = (cartData) => {
   };
 };
 
+export const cartSliceActions = cartSlice.actions;
+
 export const getCartData = () => {
   return async (dispatchAction) => {
     const getDataHttpRequest = async () => {
       const response = await axios({
-        method: "GET",
-        url: "https://ball-f928a-default-rtdb.firebaseio.com/cart",
+        method: "get",
+        url: "https://ball-f928a-default-rtdb.firebaseio.com/cart.json",
       });
       if (!response.ok) {
         throw new Error("Unable to get data ");
       }
 
-      const responseData = await response;
+      const responseData = await response.json();
 
       return responseData;
     };
@@ -107,7 +109,7 @@ export const getCartData = () => {
     try {
       const cartData = await getDataHttpRequest();
       dispatchAction(
-        CacheStorage.actions.updateCart({
+        cartSliceActions.updateCart({
           items: cartData.items || [],
           itemsQuantity: cartData.itemsQuantity,
         })
@@ -123,5 +125,4 @@ export const getCartData = () => {
   };
 };
 
-export const cartSliceActions = cartSlice.actions;
 export const cartSliceReducer = cartSlice.reducer;

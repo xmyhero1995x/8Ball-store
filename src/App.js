@@ -31,8 +31,6 @@ function App() {
     }
   }, [cart]);
 
-  console.log(isCartVisible, "im app");
-
   return (
     <Fragment>
       {statusMessage && (
