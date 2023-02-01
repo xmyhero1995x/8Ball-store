@@ -11,6 +11,8 @@ export const cartSlicer = createSlice({
   reducers: {
     toggleCartVisibility(state) {
       state.isCartMenuOpen = !state.isCartMenuOpen;
+      console.log("open");
+      console.log(state.isCartMenuOpen);
     },
     showStatusMessage(state, action) {
       state.statusMessage = {

@@ -4,9 +4,10 @@ import { mainActions } from "../../store/main-slice";
 
 export const CartButton = (props) => {
   const cartItemsNumber = useSelector((state) => state.cart.itemsQuantity)
-  const disputchFunction = useDispatch();
+  const dispatchAction = useDispatch();
+  
   const cartVisibilityHandler = () => {
-    disputchFunction(mainActions.toggleCartVisibility());
+    dispatchAction(mainActions.toggleCartVisibility());
   };
 
   return (

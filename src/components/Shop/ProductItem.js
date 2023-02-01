@@ -5,46 +5,18 @@ import { cartSliceActions } from "../../store/cart-slice";
 
 const ProductItem = (props) => {
   // const cart = useSelector((state) => state.cart);
-  const disputchFunction = useDispatch();
+  const dispatchAction = useDispatch();
 
   const { title, price, description, id } = props;
 
   const addItemHandler = () => {
-  //   const updatedItemsQuantity = cart.itemsQuantity + 1;
-
-  //   const updatedItems = cart.items.slice();
-  //   const existingItem = updatedItems.find((item) => item.id === id);
-
-  //   if(existingItem) {
-  //     const updatedExistingItem = { ...existingItem};
-  //     updatedExistingItem.quantity++;
-  //     updatedExistingItem.totalPrice =  updatedExistingItem.totalPrice + price;
-
-  //     const existingItemIndex = updatedItems.findIndex((item) => item.id === id);
-  //     updatedItems[existingItemIndex] = updatedExistingItem;
-  //   } else {
-  //     updatedItems.push({
-  //       id: id,
-  //       price: price,
-  //       quantity: 1,
-  //       totalPrice: price,
-  //       title: title,
-  //     })
-  //   }
-
-  //   const updatedCart = {
-  //     itemsQuantity: updatedItemsQuantity,
-  //     items: updatedItems,
-  //   }
-  //   disputchFunction(
-  //     cartSliceActions.updateCart(updatedCart)
-  //   );
-
-  disputchFunction(cartSliceActions.addItem({
-    id,
-    title,
-    price,
-  }));
+    dispatchAction(
+      cartSliceActions.addItem({
+        id,
+        title,
+        price,
+      })
+    );
   };
 
   return (
